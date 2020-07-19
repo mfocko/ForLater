@@ -191,7 +191,7 @@ namespace ForLater
                         // Need to check for a new TODO
                         if (CheckTodo(line, out var todo) && todo != null)
                         {
-                            todo.FilePath = filepath.Substring(filepath.LastIndexOf('\\') + 1);
+                            todo.FilePath = filepath.Substring(Root.Length + 1);
                             todo.Line = linenum;
 
                             item = todo;
@@ -202,7 +202,7 @@ namespace ForLater
                         // Need to check for a new TODO right under previous
                         items.Add(item);
 
-                        todo.FilePath = filepath.Substring(filepath.LastIndexOf('\\') + 1);
+                        todo.FilePath = filepath.Substring(Root.Length + 1);
                         todo.Line = linenum;
 
                         item = todo;
