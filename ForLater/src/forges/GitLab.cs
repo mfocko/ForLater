@@ -5,14 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ForLater.forges {
-    class GitLab : IForge {
+namespace ForLater.forges
+{
+    class GitLab : IForge
+    {
         private RestClient client;
         private readonly string token;
 
         public string Host { get; }
 
-        public GitLab(string token, string repository, string host = "gitlab.com") {
+        public GitLab(string token, string repository, string host = "gitlab.com")
+        {
             Host = host;
             this.token = token;
 
@@ -20,25 +23,30 @@ namespace ForLater.forges {
             client.AddDefaultHeader("Private-Token", token);
         }
 
-        public override bool Equals(object? obj) {
+        public override bool Equals(object? obj)
+        {
             return obj is GitLab lab &&
                    token == lab.token;
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return HashCode.Combine(token);
         }
 
-        public IForge Get() {
+        public IForge Get()
+        {
             throw new NotImplementedException();
         }
 
-        public void GetIssue(Item todo) {
+        public void GetIssue(Item todo)
+        {
             var request = new RestRequest($"{todo.ID}");
             var response = client.Get(request);
         }
 
-        public void PostIssue(Item todo, string description) {
+        public void PostIssue(Item todo, string description)
+        {
             throw new NotImplementedException();
         }
     }

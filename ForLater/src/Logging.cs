@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ForLater {
-    class Logging {
+﻿namespace ForLater
+{
+    class Logging
+    {
         // used for testing in the end *shrugs*
         // TODO: Finish it
         // Let's see how body works

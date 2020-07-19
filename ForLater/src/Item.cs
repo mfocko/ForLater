@@ -1,5 +1,7 @@
-﻿namespace ForLater {
-    class Item {
+﻿namespace ForLater
+{
+    class Item
+    {
         /// <summary>
         /// Holds a prefix of an item, e.g. `// `
         /// </summary>
@@ -50,12 +52,17 @@
         /// </summary>
         public string BodyInLines => (!string.IsNullOrEmpty(Body)) ? $"\n{Body.Trim()}" : Body;
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return $"{FilePath}@{Line}: {StringID}{Keyword}: {Title}{BodyInLines.Replace("\n", "\n   ")}";
         }
 
-        public string MarkdownString() {
-            return $"- [{(Finished ? 'x' : ' ')}] {FilePath}@{Line}: {StringID}{Keyword}: {Title}{BodyInLines.Replace("\n", "\n      ")}";
+        public string MarkdownString()
+        {
+            var firstLine = $"- [{(Finished ? 'x' : ' ')}] {FilePath}@{Line}<br>\n      ";
+            var secondLine = $"{StringID}<strong>{Title}</strong>";
+            var body = $"{BodyInLines.Replace("\n", "<br>\n      ")}";
+            return $"{firstLine}{secondLine}{body}";
         }
     }
 }
